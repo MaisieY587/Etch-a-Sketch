@@ -21,18 +21,26 @@ button.addEventListener('click', () => {
 
 function createGrid(gridSize) {
     container.replaceChildren();
+    const containerSize = Math.min(window.innerWidth, window.innerHeight) * 0.8; // 80% of the viewport size
+    const squareSize = containerSize / gridSize; // Calculate the size of each square
+
+    container.style.width = `${containerSize}px`;
+    container.style.height = `${containerSize}px`;
+
+
     for (let i=0; i < gridSize * gridSize; i++) {
         const square = document.createElement('div');
         square.className = 'square';
         square.style.backgroundColor = 'white';
+        square.style.width = `${squareSize}px`;
+        square.style.height = `${squareSize}px`;
+        
         container.appendChild(square);
     
         square.addEventListener('mouseenter', () => {
             square.style.backgroundColor = 'black';
         });
     }
-    container.style.width = `${gridSize * squareSize}px`;
-    container.style.height = `${gridSize * squareSize}px`;
 
 }
 
